@@ -1,5 +1,4 @@
 # Codema
-# Plataforma de Aprendizaje de Programación Interactiva
 
 ## Descripción
 Esta plataforma está diseñada para enseñar programación a principiantes mediante un método interactivo similar al de Duolingo. El enfoque está orientado al desarrollo web y la programación generalista, cubriendo HTML, CSS, JavaScript, Java, PHP y Python.
