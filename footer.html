@@ -1,0 +1,20 @@
+<footer id="contact" class="reveal">
+    <p>&copy; <span id="year"></span> Codema. All rights reserved.</p>
+    <p>Email: hello@Codema.io • Madrid, Spain</p>
+</footer>
+
+<script defer>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+    const reveals2 = document.querySelectorAll('.reveal');
+    const io2 = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('active');
+                io2.unobserve(e.target);
+            }
+        });
+    }, { threshold: .15 });
+    reveals2.forEach(el => io2.observe(el));
+</script>

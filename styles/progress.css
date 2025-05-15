@@ -1,0 +1,45 @@
+.progress-page {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 4rem 0;
+  min-height: 500px; /* Asegura que el canvas tenga espacio */
+}
+#graph {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 500px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.UserData {
+  background: var(--primary-color);
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.UserData h1 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 768px) {
+    .progress-page {
+        grid-template-columns: 1fr;
+    }
+
+    #graph {
+        max-height: 300px;
+    }
+}

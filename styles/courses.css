@@ -1,0 +1,70 @@
+#languageList {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-list {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-list {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise-item {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 12px;
+  margin: 4px 0;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.exercise-item:hover,
+.exercise-item.selected {
+  background: var(--secondary-color);
+}
+
+/* Estilos para el contenedor de teoría */
+#exerciseContainer {
+  padding: 24px;
+}
+
+#exerciseContainer h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.theory-content {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+   color: #ffffff;
+}
+
+/* Estilos para el bloque de código */
+.theory-code {
+  background: #23272e;
+  color: #fafafa;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  overflow-x: auto;
+  margin-bottom: 8px;
+}
+
+.theory-code code {
+  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  
+}

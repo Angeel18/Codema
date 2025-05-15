@@ -1,0 +1,117 @@
+html,body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.ranking-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.ranking-podium {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.podium {
+    background: var(--success-color);
+    border-radius: 0.8rem 0.8rem 0 0;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    color: var(--text-color);
+    width: 100px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.podium .position {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.podium .avatar {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.podium-1 {
+    height: 160px;
+    background: var(--accent-color);
+}
+
+.podium-2 {
+    height: 130px;
+}
+
+.podium-3 {
+    height: 110px;
+}
+
+.podium-2 .avatar {
+    color: silver;
+}
+.podium-3 .avatar {
+    color: #cd7f32;
+}
+.ranking-table-wrapper {
+    flex: 2;
+    min-width: 280px;
+    overflow-x: auto;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* background: var(--header-footer-bg); */
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.ranking-table th,
+.ranking-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ranking-table thead {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.ranking-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ranking-table tbody tr:hover {
+    background: var(--accent-color);
+    color: var(--text-color);
+    transition: background 0.3s ease;
+}
