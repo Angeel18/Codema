@@ -5,7 +5,7 @@
 
 
       <?php if (isset($_SESSION['id_user'])): ?>
-        <li><a href="/ejercicios/selectorEjercicioVista">Exercises</a></li>
+        <li><a href="/exercises/selectorView">Exercises</a></li>
         <li><a href="/courses">Courses</a></li>
 
         <li><a href="/progress">My progress</a></li>

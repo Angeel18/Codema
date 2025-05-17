@@ -9,8 +9,9 @@ $stmt = $pdo->prepare("SELECT
   COUNT(*) AS exercisesDone
 FROM progress
 WHERE idUser = :idUser
-GROUP BY DATE_FORMAT(doneDate, '%M')
-ORDER BY month;
+  AND YEAR(doneDate) = YEAR(CURDATE())
+GROUP BY MONTH(doneDate), DATE_FORMAT(doneDate, '%M')
+ORDER BY MONTH(doneDate);;
 ");
 
 $stmt->bindParam(":idUser", $_SESSION['id_user']);

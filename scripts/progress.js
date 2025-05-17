@@ -21,12 +21,18 @@ async function paintGraph(){
     let dates=[];
     let exercisesDone=[];
     let sum=0;
+    let maxValue=0;
 // console.log(data.exercisesDone);
 data.forEach(element => {
     exercisesDone.push(element.exercisesDone);
     dates.push(element.month);
     sum+=element.exercisesDone;
+            if (element.exercisesDone > maxValue) {
+            maxValue = element.exercisesDone;
+        }
 });
+
+const yMax = Math.ceil(maxValue * 1.3);
 // console.log(data.exercisesDone);
     document.getElementById("exercises").textContent=sum;
   const ctx = document.getElementById('graph').getContext('2d');
@@ -46,7 +52,7 @@ data.forEach(element => {
     options: {
       scales: {
         x: { title: { display: true, text: 'Month' } },
-        y: { title: { display: true, text: 'Amount' }, beginAtZero: true ,ticks: {
+        y: { title: { display: true, text: 'Exercises Done' }, beginAtZero: true, max:yMax ,ticks: {
                         stepSize: 1  
                     }}
       }

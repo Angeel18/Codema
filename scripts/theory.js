@@ -55,7 +55,7 @@ async function loadExerciseDetail(idExercise) {
 
   const buttonCheck=document.createElement("button");
   buttonCheck.classList.add("btn");
-  buttonCheck.textContent="COMPROBAR";
+  buttonCheck.textContent="CHECK";
   buttonCheck.addEventListener("click", ()=>{checkAnswer(idExercise)});
 
   data.forEach(excercise => {
@@ -104,10 +104,10 @@ async function checkAnswer(ejercicio) {
       // alert(data);
       if(data){
         // alert("");
-        feedback.textContent = "\u2705 ¡Correcto!";
+        feedback.textContent = "\u2705 Correct!";
         feedback.style.color = "green";
       }else{
-        feedback.textContent = `\u274C Incorrecto`;
+        feedback.textContent = `\u274C Incorrect`;
         feedback.style.color = "red";
       }
 
@@ -115,7 +115,7 @@ async function checkAnswer(ejercicio) {
       console.error("Error en la petición:", error);
     }
   } else {
-    feedback.textContent="No se seleccionó ninguna opción.";
+    feedback.textContent="No option selected.";
   }
 
   

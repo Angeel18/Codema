@@ -22,7 +22,7 @@
     color: #00ff00;
     overflow: auto;
     font-family: monospace;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
 }
 
 #input-container {
@@ -113,7 +113,7 @@ select {
   .extraContentArrow {
     width: 40px;
     height: 40px;
-    background-color: var(--secondary-color);
+     background-color: var(--success-color);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     display: flex;
@@ -130,7 +130,7 @@ select {
   .extraContentInner {
     padding: 2rem;
     flex: 1;
-    background-color: var(--secondary-color);
+    background-color: var(--success-color);
   }
   
   #arrowIcon {
@@ -140,4 +140,8 @@ select {
   
   .extraContent.visible #arrowIcon {
     transform: rotate(180deg);
+  }
+
+  #html-preview{
+    background-color: white;
   }

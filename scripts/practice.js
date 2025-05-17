@@ -51,6 +51,10 @@ document.getElementById("run").addEventListener('click', () => {
     case "javascript":
       runJavascriptCode(code);
       break;
+
+    case "html":
+  runHtmlCode(code);
+  break;
   }
 });
 
@@ -173,11 +177,11 @@ async function checkAnswer() {
 
     if (data) {
       // alert("");
-      alert("\u2705 ¡Correcto!");
+      alert("\u2705 Correct!");
       
 
     } else {
-      alert(`\u274C Incorrecto`);
+      alert(`\u274C Incorrect`);
     }
 
   } catch (error) {
@@ -185,6 +189,17 @@ async function checkAnswer() {
   }
 }
 
+async function runHtmlCode(code) {
+  const resultContainer = document.getElementById('result-container');
+  resultContainer.innerHTML = '<iframe id="html-preview" style="width:100%; height:100%; border:none;"></iframe>';
+
+  const iframe = document.getElementById('html-preview');
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  
+  iframeDoc.open();
+  iframeDoc.write(code);
+  iframeDoc.close();
+}
 
 async function initialize() {
   await fetchExcercise();

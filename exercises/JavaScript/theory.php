@@ -18,12 +18,13 @@ session_start();
   ?>
   <div class="content">
     <div class="sidebar">
-      <h2>Ejercicios Teóricos</h2>
-      <div id="exerciseList">Cargando ejercicios...</div>
+      <h2>Theoretical exercises</h2>
+      <div id="exerciseList">Loading Exercises...</div>
     </div>
     <di class="main">
       <div id="exerciseContainer">
-        <p>Selecciona un ejercicio de la izquierda para comenzar.</p>
+        <p>
+Select an exercise from the left to begin.</p>
       </div>
 
       <div id="feedback"></div>

@@ -28,23 +28,23 @@ session_start();
   </div>
 
   <div class="extraContentInner">
-    Informacion Ejercicio
+    Exercise Information
     <p id="description"></p>
   </div>
 </div>
 
 
-  <div class="botonera">
-    <button id="run">EJECUTAR</button>
-    <button id="check">Comprobar</button>
+  <div class="buttonBox">
+    <button id="run">RUN</button>
+    <button id="check">CHECK</button>
 
     <select name="" id="exercise">
-      <option value="" selected disabled hidden>Ejercicio</option>
+      <option value="" selected disabled hidden>Exercise</option>
     </select>
   </div>
 
   <div id="input-container">
-    <textarea id="user-input" placeholder="Introduce la entrada aquí..."></textarea>
+    <textarea id="user-input" placeholder="Your inputs go here..."></textarea>
   </div>
 
   <div id="container">
