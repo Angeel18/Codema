@@ -3,9 +3,10 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dynamic Selector</title>
+  <title>Codema – Dynamic Selector</title>
   <link rel="stylesheet" href="../styles/selector.css">
   <link rel="stylesheet" href="../styles/homeStyles.css">
 </head>
@@ -28,10 +29,19 @@ session_start();
       <option value="">-- Select mode --</option>
     </select>
 
+
+    <br><br>
+
+    <label for="exerciseSelect">Exercise:</label>
+    <select id="exerciseSelect" disabled style="display: none;">
+      <option value="">-- Select Exercise --</option>
+    </select>
+
     <button id="goBtn">Go</button>
   </div>
 
   <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html"); ?>
   <script src="../scripts/selector.js"></script>
 </body>
+
 </html>

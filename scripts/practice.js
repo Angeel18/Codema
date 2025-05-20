@@ -1,7 +1,11 @@
 const params = new URLSearchParams(window.location.search);
 const lan = params.get('Language');
 const lanMinus = lan.toLowerCase();
-const type = params.get('Type');
+
+// const type = params.get('Type');
+const idExercise=params.get('idExercise');
+const daily = params.get('daily');
+
 let data;
 
 require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs' } });
@@ -17,7 +21,7 @@ require(['vs/editor/editor.main'], function () {
 
 });
 
-const select = document.getElementById("exercise");
+// const select = document.getElementById("exercise");
 const arrow = document.getElementById("extraContentArrow");
 const panel = document.getElementById("extraContent");
 const description = document.getElementById("description");
@@ -25,7 +29,7 @@ const resultContainer = document.getElementById('result-container');
 const check = document.getElementById("check");
 
 check.addEventListener("click", checkAnswer);
-select.addEventListener("change", loadExcersiceDetails);
+// select.addEventListener("change", loadExcersiceDetails);
 
 arrow.addEventListener("click", () => {
   panel.classList.toggle("visible");
@@ -36,6 +40,7 @@ document.addEventListener("click", (e) => {
     panel.classList.remove("visible");
   }
 });
+
 document.getElementById("run").addEventListener('click', () => {
   const code = editor.getValue();
 
@@ -61,42 +66,27 @@ document.getElementById("run").addEventListener('click', () => {
 
 async function fetchExcercise() {
   try {
-    const response = await fetch(`../API/fetchExcercise.php`, {
+    const response = await fetch(`../actions/fetchExercise.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ Language: lan, Type: type })
+      body: JSON.stringify({ idExercise: idExercise , Type:"practice",Language:lan})
     });
+
     data = await response.json();
+    //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
+    if(!data){
+    window.location.href = `selectorView.php`;
+    }else{
+      description.textContent = data.description;
+      if (data.extraField != null) {
+        editor.setValue(data.extraField); 
+        }
+    }
   } catch (error) {
     console.error("Error en la petición:", error);
   }
-}
-
-async function loadExcersice() {
-  let i = 1;
-  data.forEach(excercise => {
-    const option = document.createElement("option");
-    option.value = excercise.idExercise;
-    option.textContent = i;
-    i++;
-    select.appendChild(option);
-  });
-}
-
-async function loadExcersiceDetails() {
-  const valorSeleccionado = select.value;
-  data.forEach(exercise => {
-    if (exercise.idExercise == valorSeleccionado) {
-      if (exercise.extraField != null) {
-        editor.setValue(exercise.extraField);
-      }
-
-      description.textContent = exercise.description;
-    }
-  })
-
 }
 
 async function runPythonCode(code) {
@@ -120,25 +110,32 @@ async function runPythonCode(code) {
 }
 
 async function runJavascriptCode(code) {
-  const originalConsoleLog = console.log;
-  console.log = function (...args) {
-    originalConsoleLog(...args);
-    const resultContainer = document.getElementById('result-container');
-    const message = args.join(' ');
-    resultContainer.textContent += message + '\n';
-  };
+  console.clear();
 
-  // const code = editor.getValue();
   const resultContainer = document.getElementById('result-container');
   resultContainer.textContent = ''; // Limpiar resultados anteriores
+
+  const originalConsoleLog = console.log;
+
   try {
-    eval(code);
+    // Redefinir console.log para capturar salidas
+    console.log = function (...args) {
+      originalConsoleLog(...args); // También imprime en la consola real
+      const message = args.join(' ');
+      resultContainer.textContent += message + '\n';
+    };
+
+    eval(code); // Ejecutar el código del usuario
+
   } catch (error) {
     resultContainer.textContent += error + '\n';
-  }
-  // console.log(code);
 
+  } finally {
+    // Restaurar console.log al original
+    console.log = originalConsoleLog;
+  }
 }
+
 
 async function runJavaCode(code) {
   resultContainer.textContent = ''; // Limpiar resultados anteriores
@@ -161,31 +158,11 @@ async function runJavaCode(code) {
 }
 
 async function checkAnswer() {
-  let input = editor.getValue();
-  let ejercicio = select.value;
-  try {
-    const response = await fetch("../API/checkAnswer.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ input, ejercicio }) //le paso los parametros de codigo y ejercicio al php
-    });
-
-    const data = await response.text();
-    // alert(data);
-
-    if (data) {
-      // alert("");
+  if(data.solution==editor.getValue()){
       alert("\u2705 Correct!");
-      
 
-    } else {
+  }else{
       alert(`\u274C Incorrect`);
-    }
-
-  } catch (error) {
-    console.error("Error en la petición:", error);
   }
 }
 
@@ -201,9 +178,10 @@ async function runHtmlCode(code) {
   iframeDoc.close();
 }
 
+
+
 async function initialize() {
   await fetchExcercise();
-  loadExcersice();
 }
 
 initialize();

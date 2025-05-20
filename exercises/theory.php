@@ -5,11 +5,10 @@ session_start();
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ejercicios Teóricos</title>
+  <title>Codema – Theoretical exercises</title>
   <link rel="stylesheet" href="../../styles/homeStyles.css">
   <link rel="stylesheet" href="../../styles/theory.css">
 
-  
 </head>
 <body>
 <?php
@@ -26,14 +25,14 @@ session_start();
 Select an exercise from the left to begin.</p>
     </div>
 
-    
     <div id="feedback"></div>
   </div>
   </div>
   <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
   ?>
-  <script src="../../scripts/theory.js" data-language="java"></script>
+   <script src="../scripts/theory.js" data-language=<?php $_GET["Language"]?>></script>
+
 
 </body>
 </html>

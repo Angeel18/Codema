@@ -7,8 +7,9 @@ header('Content-Type: application/json');
 
 
 $pdo = createConnection();
+// $stmt = $pdo->prepare("SELECT * from daily_exercises where exercise_date = CURDATE()");
+$stmt = $pdo->prepare("SELECT d.*, l.name from daily_exercises d join language l on l.idLanguage=d.idLanguage where exercise_date = CURDATE()");
 
-$stmt = $pdo->prepare("SELECT * from daily_exercises where exercise_date = CURDATE()");
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($result == null) {
