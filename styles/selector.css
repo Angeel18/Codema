@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
     min-height: 100vh;
   }
-  .centrar{
+  .center{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,7 @@ body {
   }
   
   /* Botón */
-  button#irBtn {
+  button#goBtn {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
@@ -61,7 +61,7 @@ body {
     transition: transform 0.2s, opacity 0.2s;
   }
   
-  button#irBtn:hover {
+  button#goBtn:hover {
     /* transform: translateY(-3px); */
     opacity: 0.92;
     transform: scale(1.02);

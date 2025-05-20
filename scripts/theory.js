@@ -1,24 +1,33 @@
 let data;
+// console.log("a");
 const params = new URLSearchParams(window.location.search);
 const lan = params.get('Language');
-const lanMinus=lan.toLowerCase();
-const type = params.get('Type');
+const lanMinus = lan.toLowerCase();
+// const type = params.get('Type');
+// const idExercise=params.get('idExercise'); 
 
-async function fetchExcercise(){
-    try {
-      const response = await fetch(`../API/fetchExcercise.php`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ Language: lan, Type: type })
-      });
-      data = await response.json();
-    }catch (error) {
-      console.error("Error en la petición:", error);
+async function fetchExcercise() {
+  try {
+    const response = await fetch(`../actions/fetchExercise.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Type:"theory",Language:lan})
+    });
+
+    data = await response.json();
+    //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
+    if(!data){
+    window.location.href = `selectorView.php`;
+    }else{
+      // loadExcersice();
     }
+  } catch (error) {
+    console.error("Error en la petición:", error);
   }
-  
+}
+
 async function loadExcersice() {
     try {
 
@@ -55,7 +64,7 @@ async function loadExerciseDetail(idExercise) {
 
   const buttonCheck=document.createElement("button");
   buttonCheck.classList.add("btn");
-  buttonCheck.textContent="COMPROBAR";
+  buttonCheck.textContent="CHECK";
   buttonCheck.addEventListener("click", ()=>{checkAnswer(idExercise)});
 
   data.forEach(excercise => {
@@ -89,33 +98,24 @@ async function loadExerciseDetail(idExercise) {
 async function checkAnswer(ejercicio) {
   const selected = document.querySelector('input[name="option"]:checked');
   const feedback=document.getElementById("feedback");
+
+   const selectedExercise = data.find(ex => ex.idExercise == ejercicio);
+
+
   if (selected) {
     // Obtén el valor seleccionado
     const input = selected.value;
-    try {
-      const response = await fetch("../API/checkAnswer.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({input,ejercicio}) //le paso los parametros de codigo y ejercicio al php
-      });
-      const data = await response.text();
-      // alert(data);
-      if(data){
-        // alert("");
-        feedback.textContent = "\u2705 ¡Correcto!";
+
+      if(selectedExercise.solution==input){
+              feedback.textContent = "\u2705 Correct!";
         feedback.style.color = "green";
       }else{
-        feedback.textContent = `\u274C Incorrecto`;
+       feedback.textContent = `\u274C Incorrect`;
         feedback.style.color = "red";
       }
 
-    } catch (error) {
-      console.error("Error en la petición:", error);
-    }
   } else {
-    feedback.textContent="No se seleccionó ninguna opción.";
+    feedback.textContent="No option selected.";
   }
 
   

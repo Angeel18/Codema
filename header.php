@@ -5,12 +5,12 @@
 
 
       <?php if (isset($_SESSION['id_user'])): ?>
-        <li><a href="/ejercicios/selectorEjercicioVista">Exercises</a></li>
+        <li><a href="/exercises/selectorView">Exercises</a></li>
         <li><a href="/courses">Courses</a></li>
 
         <li><a href="/progress">My progress</a></li>
         <li><a href="/monthlyRanking">Monthly Ranking</a></li>
-        <li><a href="#contact">Daily Challenge</a></li>
+        <li><a href="/pruebaDailyConAPI/cargarEx.php">Daily Challenge</a></li>
         <li>
           <a href="/logout" title="Logout">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -24,10 +24,10 @@
         </li>
       <?php else: ?>
         <li><a href="#tracks">Tracks</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="pricing">Pricing</a></li>
         <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="aboutUs">About Us</a></li>
+        <li><a href="contact">Contact</a></li>
         <li>
           <a href="/login" title="Login">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill"

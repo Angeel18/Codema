@@ -6,7 +6,7 @@ session_start();
 
 <head>
   <meta charset="UTF-8">
-  <title>Editor Python con Monaco</title>
+  <title>Codema – Daily Challenge</title>
   <link rel="stylesheet" href="../../styles/homeStyles.css">
   <link rel="stylesheet" href="../../styles/practice.css">
 </head>
@@ -28,23 +28,20 @@ session_start();
   </div>
 
   <div class="extraContentInner">
-    Informacion Ejercicio
+    Exercise Information
     <p id="description"></p>
   </div>
 </div>
 
 
-  <div class="botonera">
-    <button id="run">EJECUTAR</button>
-    <button id="check">Comprobar</button>
+  <div class="buttonBox">
+    <button id="run">RUN</button>
+    <button id="check">CHECK</button>
 
-    <select name="" id="exercise">
-      <option value="" selected disabled hidden>Ejercicio</option>
-    </select>
   </div>
 
   <div id="input-container">
-    <textarea id="user-input" placeholder="Introduce la entrada aquí..."></textarea>
+    <textarea id="user-input" placeholder="Your inputs go here..."></textarea>
   </div>
 
   <div id="container">
@@ -57,7 +54,7 @@ session_start();
   ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
   <!-- <script src="js/ejecutorPython.js"></script> -->
-  <script src="../../scripts/practice.js" data-language="python"></script>
+  <script src="../scripts/daily.js" data-language=<?php $_GET["Language"]?>></script>
 
 </body>
 
