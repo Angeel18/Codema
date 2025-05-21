@@ -80,6 +80,63 @@ nav a {
 nav a:hover {
     color: var(--secondary-color);
 }
+.hamburger{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 3px;
+}
+
+
+.hamburger {
+height: 50px;
+width: 50px;
+margin-left: auto;
+position: relative;
+background-color: var(--header-footer-bg);
+border: none;
+display: none;
+}
+
+.hamburger span{
+    height: 5px;
+    width: 100%;
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform:  translate(-50%, -50%);
+    transition:  .3s ease;
+}
+.hamburger span:nth-child(1){
+    top: 25%;
+}
+.hamburger span:nth-child(3){
+    top: 75%;
+}
+
+.hamburger.active span:nth-child(1){
+    top: 50%;
+    transform:  translate(-50%, -50%) rotate(45deg);
+
+}
+.hamburger.active span:nth-child(2){
+   opacity:0;
+}
+.hamburger.active span:nth-child(3){
+    top: 50%;
+    transform:  translate(-50%, -50%) rotate(-45deg);
+
+}
+
+@media(max-width: 768px)  {
+    .hamburger{
+        display:block
+    }
+    .nav-container{
+        display: none;
+    }
+}
 
 /* ==== Buttons ================================= */
 .btn,

@@ -1,9 +1,14 @@
 <header class="reveal">
   <a href="/" class="logo">Codema</a>
-  <nav>
-    <ul>
 
+    <button class="hamburger" id="hamburger">
+      <span class="hamburger-box"></span>
+      <span class="hamburger-box"></span>
+      <span class="hamburger-box"></span>
+    </button>
 
+  <nav class="nav-container">
+    <ul class="nav-list">
       <?php if (isset($_SESSION['id_user'])): ?>
         <li><a href="/exercises/selectorView">Exercises</a></li>
         <li><a href="/courses">Courses</a></li>
@@ -53,4 +58,13 @@
     });
   }, { threshold: .15 });
   reveals.forEach(el => io.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  
+  hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+  });
+
+
 </script>
+
