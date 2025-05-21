@@ -63,6 +63,8 @@
   
   hamburger.addEventListener('click', function() {
       hamburger.classList.toggle('active');
+      document.querySelector('.nav-list').classList.toggle('active');
+
   });
 
 

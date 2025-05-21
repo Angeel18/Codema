@@ -134,7 +134,24 @@ display: none;
         display:block
     }
     .nav-container{
-        display: none;
+        position:relative;
+    }
+    .nav-list{
+        /* display: none; */
+        flex-direction: column;
+        position: absolute;
+        top: 25px;
+        right: -30000px;
+        background-color: var(--header-footer-bg);
+        padding: 20px;
+        width: 80vw;
+        text-align: center;
+
+        transition:  .7s ease;
+    }
+    .nav-list.active{
+        right: -2rem;
+
     }
 }
 
