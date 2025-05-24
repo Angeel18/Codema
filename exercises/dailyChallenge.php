@@ -29,6 +29,7 @@ session_start();
 
   <div class="extraContentInner">
     Exercise Information
+    <p id="LanguageToCode"></p>
     <p id="description"></p>
   </div>
 </div>
@@ -54,7 +55,7 @@ session_start();
   ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
   <!-- <script src="js/ejecutorPython.js"></script> -->
-  <script src="../scripts/daily.js" data-language=<?php $_GET["Language"]?>></script>
+  <script  type="module" src="../scripts/daily.js" data-language=<?php $_GET["Language"]?>></script>
 
 </body>
 

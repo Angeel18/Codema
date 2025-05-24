@@ -15,7 +15,7 @@
 
         <li><a href="/progress">My progress</a></li>
         <li><a href="/monthlyRanking">Monthly Ranking</a></li>
-        <li><a href="/pruebaDailyConAPI/cargarEx.php">Daily Challenge</a></li>
+        <li><a href="/exercises/dailyChallenge">Daily Challenge</a></li>
         <li>
           <a href="/logout" title="Logout">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"

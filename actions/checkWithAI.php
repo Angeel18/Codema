@@ -31,6 +31,7 @@ if (!$response) {
 }
 
 $datos = json_decode($response, true);
+
 if (json_last_error() !== JSON_ERROR_NONE) {
     echo json_encode(["error" => "Error decoding API response"]);
     exit();

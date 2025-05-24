@@ -57,7 +57,7 @@ session_start();
   ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
   <!-- <script src="js/ejecutorPython.js"></script> -->
-  <script src="../scripts/practice.js" data-language=<?php $_GET["Language"]?>></script>
+  <script type="module" src="../scripts/practice.js" data-language=<?php $_GET["Language"]?>></script>
 
 </body>
 
