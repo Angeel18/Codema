@@ -47,7 +47,7 @@
   </nav>
 </header>
 
-<script defer>
+<!-- <script defer>
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -68,5 +68,27 @@
   });
 
 
+</script> -->
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('active');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: .15 });
+    reveals.forEach(el => io.observe(el));
+
+    const hamburger = document.querySelector('.hamburger');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('view');
+      document.querySelector('.nav-list').classList.toggle('view');
+    });
+  });
 </script>
 

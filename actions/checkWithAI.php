@@ -1,5 +1,5 @@
 <?php
-$apiKey = "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";
+$apiKey ;
 $data = json_decode(file_get_contents('php://input'), true);  // Usar 'php://input' para obtener el body del request
 
 $code = $data['code'] ?? '';

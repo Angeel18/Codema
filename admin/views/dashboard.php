@@ -10,6 +10,8 @@ if (!isset($_SESSION['is_superuser']) || $_SESSION['is_superuser'] !== true) {
 
 // -- DB & schema setup
 $db     = createConnection();
+// **1. Turn on exception mode**
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $schema = 'codema';
 
 // -- fetch all tables dynamically
@@ -24,12 +26,12 @@ if (!in_array($table, $tables, true)) {
     exit;
 }
 
-// -- handle CRUD POSTs (with password hashing, skipping CURRENT_TIMESTAMP cols on insert)
+// -- handle CRUD POSTs
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $tbl    = $_POST['table']  ?? '';
     if ($tbl === $table) {
-        // grab columns + PK
+        // grab columns + PK (unchanged)
         $desc = $db->prepare("DESCRIBE `$schema`.`$tbl`");
         $desc->execute();
         $cols = $desc->fetchAll(PDO::FETCH_ASSOC);
@@ -79,43 +81,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 )
             )->execute([$_POST['pk_val']]);
         }
-        // INSERT (skip auto_increment & CURRENT_TIMESTAMP defaults)
+        // INSERT (skip auto_increment & CURRENT_TIMESTAMP defaults; omit empty fields)
         elseif ($action === 'insert') {
             $fields       = [];
             $placeholders = [];
             $params       = [];
+
             foreach ($cols as $col) {
                 $f = $col['Field'];
-                // skip auto-increment and timestamp default columns
+
+                // omit auto_increment and CURRENT_TIMESTAMP defaults
                 if ($col['Extra'] === 'auto_increment'
                     || strtoupper(($col['Default'] ?? '')) === 'CURRENT_TIMESTAMP'
                 ) {
                     continue;
                 }
-                // password hashing on insert
-                if ($f === 'password') {
-                    $raw = $_POST[$f] ?? '';
-                    $fields[]       = "`$f`";
-                    $placeholders[] = '?';
-                    $params[]       = password_hash($raw, PASSWORD_DEFAULT);
+
+                // get raw value and trim whitespace
+                $raw = $_POST[$f] ?? '';
+                $val = trim($raw);
+
+                // if empty after trim, skip this field entirely
+                if ($val === '') {
                     continue;
                 }
+
+                // handle password field: always hash if not empty
+                if ($f === 'password') {
+                    $fields[]       = "`$f`";
+                    $placeholders[] = '?';
+                    $params[]       = password_hash($val, PASSWORD_DEFAULT);
+                    continue;
+                }
+
+                // all other non-empty fields
                 $fields[]       = "`$f`";
                 $placeholders[] = '?';
-                $params[]       = $_POST[$f] ?? null;
+                $params[]       = $val;
             }
-            $sql = sprintf(
-                "INSERT INTO `%s`.`%s` (%s) VALUES (%s)",
-                $schema, $tbl,
-                implode(', ', $fields),
-                implode(', ', $placeholders)
-            );
-            $db->prepare($sql)->execute($params);
+
+            // if no fields to insert, show alert
+            if (empty($fields)) {
+                echo "<script>alert('No hay datos para insertar.');</script>";
+            } else {
+                $sql = sprintf(
+                    "INSERT INTO `%s`.`%s` (%s) VALUES (%s)",
+                    $schema, $tbl,
+                    implode(', ', $fields),
+                    implode(', ', $placeholders)
+                );
+                try {
+                    $db->prepare($sql)->execute($params);
+                    header('Location: ?table=' . urlencode($table));
+                    exit;
+                } catch (PDOException $e) {
+                    $msg = addslashes($e->getMessage());
+                    echo "<script>alert('Insert failed: {$msg}');</script>";
+                }
+            }
         }
+    } else {
+        // if table mismatch, redirect
+        header('Location: ?table=' . urlencode($tables[0]));
+        exit;
     }
-    // avoid resubmission
-    header('Location: ?table=' . urlencode($table));
-    exit;
 }
 
 // -- fetch columns + data for display
@@ -130,7 +159,8 @@ foreach ($cols as $c) {
     }
 }
 $rows = $db->query("SELECT * FROM `$schema`.`$table`")->fetchAll(PDO::FETCH_ASSOC);
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

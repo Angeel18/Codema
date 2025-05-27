@@ -132,12 +132,13 @@ display: none;
 @media(max-width: 768px)  {
     .hamburger{
         display:block
+        /* display: flex; */
     }
     .nav-container{
         position:relative;
     }
     .nav-list{
-        /* display: none; */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 25px;
@@ -149,7 +150,8 @@ display: none;
 
         transition:  .7s ease;
     }
-    .nav-list.active{
+    .nav-list.view{
+        display: flex;
         right: -2rem;
 
     }
