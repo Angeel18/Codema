@@ -85,7 +85,8 @@ async function checkWithAI() {
   } catch (error) {
     console.error("Error en la petición:", error);
   }
-  }else{
+  }
+  else{
     alert("You Exceed the number of tries for this exercise today");
   }
  

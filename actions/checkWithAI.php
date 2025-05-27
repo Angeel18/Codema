@@ -1,5 +1,9 @@
 <?php
-$apiKey ;
+require_once '../config/config.php';
+Dotenv::load(__DIR__ . '/../.env');
+
+$apiKey =getenv("GROQ_API_KEY") ;
+
 $data = json_decode(file_get_contents('php://input'), true);  // Usar 'php://input' para obtener el body del request
 
 $code = $data['code'] ?? '';
