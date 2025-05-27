@@ -19,19 +19,7 @@ session_start();
 
 <body>
   <!-- Header -->
-  <!-- <header class="reveal">
-    <a href="#" class="logo">Codema</a>
-    <nav>
-      <ul>
-        <li><a href="/ejercicios/selectorEjercicioVista">Ejercicios</a></li>
-        <li><a href="#tracks">Tracks</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header> -->
+
     <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     ?>
@@ -230,10 +218,6 @@ session_start();
     </div>
   </section>
   <!-- Footer -->
-  <!-- <footer id="contact" class="reveal">
-    <p>&copy; <span id="year"></span> Codema. All rights reserved.</p>
-    <p>Email: hello@Codema.io • Madrid, Spain</p>
-  </footer> -->
 
       <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");

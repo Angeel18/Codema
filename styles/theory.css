@@ -1,4 +1,7 @@
-
+#exerciseList{
+  height: 200px;
+  overflow-y: scroll;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -62,4 +65,17 @@ body {
   .btn:hover {
     transform: none;
     opacity: 0.92;
+}
+
+@media(max-width:768px){
+.content{
+  flex-direction: column;
+}
+.sidebar{
+  width: 100%;
+}
+#exerciseList{
+  display: flex;
+  gap: 1rem;
+}
 }

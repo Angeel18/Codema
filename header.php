@@ -2,9 +2,9 @@
   <a href="/" class="logo">Codema</a>
 
     <button class="hamburger" id="hamburger">
-      <span class="hamburger-box"></span>
-      <span class="hamburger-box"></span>
-      <span class="hamburger-box"></span>
+      <span ></span>
+      <span ></span>
+      <span ></span>
     </button>
 
   <nav class="nav-container">
@@ -47,30 +47,6 @@
   </nav>
 </header>
 
-<!-- <script defer>
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('active');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: .15 });
-  reveals.forEach(el => io.observe(el));
-
-  const hamburger = document.querySelector('.hamburger');
-  
-  hamburger.addEventListener('click', function() {
-      hamburger.classList.toggle('active');
-      document.querySelector('.nav-list').classList.toggle('active');
-
-  });
-
-
-</script> -->
-
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const reveals = document.querySelectorAll('.reveal');
@@ -86,8 +62,10 @@
 
     const hamburger = document.querySelector('.hamburger');
     hamburger.addEventListener('click', function() {
-      hamburger.classList.toggle('view');
-      document.querySelector('.nav-list').classList.toggle('view');
+    console.log("asd");
+
+      hamburger.classList.toggle('active');
+      document.querySelector('.nav-list').classList.toggle('active');
     });
   });
 </script>

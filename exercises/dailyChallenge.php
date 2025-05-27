@@ -6,9 +6,11 @@ session_start();
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Codema – Daily Challenge</title>
-  <link rel="stylesheet" href="../../styles/homeStyles.css">
-  <link rel="stylesheet" href="../../styles/practice.css">
+  <link rel="stylesheet" href="/styles/homeStyles.css">
+  <link rel="stylesheet" href="/styles/practice.css">
 </head>
 
 <body>
@@ -47,7 +49,7 @@ session_start();
 
   <div id="container">
     <div id="editor-container"></div>
-    <div id="separator"></div>
+    <!-- <div id="separator"></div> -->
     <div id="result-container"></div>
   </div>
   <?php

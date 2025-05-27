@@ -1,33 +1,115 @@
+:root {
+    --primary-color: #292653;
+    --secondary-color: #709ad0;
+    --background-color: #222842;
+    --header-footer-bg: #191f3b;
+    --text-color: #ffffff;
+    --accent-color: #6812b8;
+    --success-color: #6f7eff;
+}
 
+/* === Estructura principal === */
 #container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    grid-auto-rows: minmax(50vh, 1fr);
+    width: 100%;
     height: 100vh;
+    gap:1rem;
 }
 
 #editor-container {
-    width: 50%;
-   height: 100vh;
-}
-
-#separator {
-    width: 4px;
-    background-color: #ccc;
-    cursor: col-resize;
+    min-height: 50vh;
+    background: var(--background-color);
 }
 
 #result-container {
-    width: 50%;
-    height: 100%;
     background-color: #1e1e1e;
     color: #00ff00;
     overflow: auto;
     font-family: monospace;
-    /* white-space: pre-wrap; */
 }
 
-#input-container {
-    width: 100%;
-    margin: 10px 0;
+/* #separator {
+    width: 4px;
+    background-color: #ccc;
+    cursor: col-resize;
+    display: none;
+} */
+
+/* Mostrar separador solo en vista de dos columnas */
+#container:has(> :nth-child(3)) #separator {
+    display: block;
+}
+
+/* === Componentes reutilizables === */
+.buttonBox {
+    margin: 40px 0 40px 40px;
+}
+
+/* Panel deslizable */
+.extraContent {
+    position: fixed;
+    top: 0;
+    right: -40vw;
+    width: 40vw;
+    height: 100vh;
+    background-color: #ccc;
+    z-index: 1000;
+    transition: right 0.4s ease;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+}
+
+.extraContent.visible {
+    right: 0;
+}
+
+.extraContentArrow {
+    width: 40px;
+    height: 40px;
+    background-color: var(--success-color);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    left: -40px;
+    top: 20%;
+    color: var(--primary-color);
+}
+
+.extraContentInner {
+    padding: 2rem;
+    flex: 1;
+    background-color: var(--success-color);
+}
+
+#arrowIcon {
+    transition: transform 0.7s ease-in-out;
+}
+
+.extraContent.visible #arrowIcon {
+    transform: rotate(180deg);
+}
+
+/* === Elementos de formulario === */
+select {
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.6rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    width: 260px;
+}
+
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 #user-input {
@@ -41,107 +123,46 @@
     resize: vertical;
 }
 
-
+/* === Botones === */
 button {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
     background: var(--secondary-color);
     border: none;
     color: var(--primary-color);
 }
+
 button:hover {
     transform: translateY(-3px);
     opacity: 0.92;
 }
 
-button {
-    
-        display: inline-block;
-        padding: 0.85rem 1.75rem;
-        border-radius: 0.6rem;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: transform 0.2s, opacity 0.2s;
-    
+/* === User Data Grid === */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1rem;
+    width: 100%;
 }
 
-select {
-    padding: 0.85rem 1rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.6rem;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    /* margin-bottom: 1.5rem; */
-    width: 260px;
-  }
-  
-  select:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    /* background-color: var(--primary-color); */
-
-  }
-
-  .buttonBox{
-    margin-left: 40px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-
-  }
-
-/* Panel deslizable completo */
-.extraContent {
-    position: fixed;
-    top: 0;
-    right: -40vw;
-    width: 40vw;
-    height: 100vh;
-    background-color: #ccc;
-    z-index: 1000;
-    transition: right 0.4s ease;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: row;
-  }
-  
-  /* Mostrar panel */
-  .extraContent.visible {
-    right: 0;
-  }
-  
-  /* Flecha DENTRO del panel, pegada al borde izquierdo */
-  .extraContentArrow {
-    width: 40px;
-    height: 40px;
-     background-color: var(--success-color);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    left: -40px; /* Saca la flecha ligeramente fuera del panel para que esté en el borde */
-    top: 20%;
-    color: var(--primary-color);
-  }
-  
-  /* Contenido dentro del panel */
-  .extraContentInner {
-    padding: 2rem;
-    flex: 1;
-    background-color: var(--success-color);
-  }
-  
-  #arrowIcon {
-    /* transition: transform 0.3s ease; */
-    transition: transform 0.7s ease-in-out;
-  }
-  
-  .extraContent.visible #arrowIcon {
-    transform: rotate(180deg);
-  }
-
-  #html-preview{
+/* === Ajustes para vista previa HTML === */
+#html-preview {
     background-color: white;
-  }
+}
+
+/* === Efectos de transición === */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.75s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: none;
+}

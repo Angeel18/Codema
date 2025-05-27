@@ -9,6 +9,8 @@ $userId = !isset($_SESSION["id_user"]) ? exit() : $_SESSION["id_user"];
 
 <head>
     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Codema – Courses</title>
     <link rel="stylesheet" href="styles/homeStyles.css">
     <link rel="stylesheet" href="styles/theory.css">
