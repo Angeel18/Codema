@@ -1,7 +1,10 @@
 <?php
 session_start();
 $userId = isset($_SESSION["id_user"]) ? header("location:/") : "" ;
-
+if (isset($_SESSION['is_superuser'])) {
+session_destroy();
+session_start();
+}
 // if (isset($_SESSION["id_user"])) {
 //     header("Location: ./courses");
 //     exit; // Muy importante para evitar que el resto del script se ejecute

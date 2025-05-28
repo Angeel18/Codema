@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['is_superuser'])) {
+session_destroy();
+session_start();
+}
 $userId = !isset($_SESSION["id_user"]) ? exit() : $_SESSION["id_user"];
 // session_destroy();
 ?>

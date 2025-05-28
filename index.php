@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['is_superuser'])) {
+session_destroy();
+session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,64 +36,61 @@ session_start();
       <a class="btn" href="#pricing">Start Free Today</a>
       <a class="btn-outline" href="#">Book a Demo</a>
     </div>
-    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80"
-      alt="Woman coding on laptop">
-  </section>
-  <!-- Logos -->
-  <section class="logos reveal">
-    <div class="section-title">Trusted by learners at</div>
-    <div class="logo-wrap">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Google_Logo.svg" alt="Google">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/IBM_logo_in.jpg" alt="IBM">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_Tesla.svg" alt="Tesla">
-    </div>
+    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/24ed9392232693.5e45b4885aef5.jpg"
+      alt="Technology picture">
   </section>
   <!-- Features -->
   <section id="features" class="features reveal">
     <div class="feature-card">
       <h3>Interactive challenges</h3>
-      <p>Code directly in your browser and see results instantly.</p>
+      <p>Code directly in your browser whether in ur computer or your phone and see results instantly.</p>
     </div>
     <div class="feature-card">
       <h3>Daily streaks & XP</h3>
-      <p>Earn XP, unlock badges and keep your motivation high.</p>
+      <p>Earn XP, unlock badges and keep your motivation high trying to pass other users.</p>
     </div>
     <div class="feature-card">
       <h3>Personalized paths</h3>
-      <p>Courses adapt to your pace and goals.</p>
+      <p>Courses adapt to your pace and goals, no need to rush while learning.</p>
     </div>
     <div class="feature-card">
       <h3>Community support</h3>
-      <p>Ask questions and collaborate worldwide.</p>
+      <p>Ask questions and collaborate worldwide just a few clicks away.</p>
+    </div>
+  </section>
+  <!-- Logos -->
+  <section class="logos reveal">
+    <div class="section-title">In colaboration with</div>
+    <div class="logo-wrap">
+      <img src="https://digitechfp.com/wp-content/uploads/2024/09/HZN-03-SIN-CAJA-CIAN-RGB@2x.png" alt="Digitech">
     </div>
   </section>
   <!-- Tracks -->
   <section id="tracks" class="tracks reveal">
     <h2 class="section-title">Choose your learning track</h2>
+    <p style="text-align: center;">Choose what do you wanna learn, there are no obstacles in your way</p>
     <div class="tracks-grid">
       <div class="track"><img
-          src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" alt="Web dev">
-        <div class="track-content">
-          <h4>Full-Stack Web Dev</h4>
-          <p>HTML, CSS, JS, React, Node & more.</p>
+          src="https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/front-end-developer.png" alt="Web dev">
+        <div class="Front-end dev">
+          <h4>Front-end developer</h4>
+          <p>HTML, CSS, JS, React & more.</p>
         </div>
       </div>
       <div class="track"><img
-          src="https://images.unsplash.com/photo-1581091012184-5cbf53d899d0?auto=format&fit=crop&w=900&q=80"
-          alt="Data Science">
+          src="https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/back-end-developer.png"
+          alt="Back-end dev">
         <div class="track-content">
-          <h4>Data Science</h4>
-          <p>Python, Pandas, SQL & ML.</p>
+          <h4>Back-end developer</h4>
+          <p>Python, PHP, SQL & more.</p>
         </div>
       </div>
       <div class="track"><img
-          src="https://images.unsplash.com/photo-1557432401-b646b5af6c6c?auto=format&fit=crop&w=900&q=80"
-          alt="Mobile Apps">
+          src="https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/what-is-a-full-stack-developer.png"
+          alt="Full-stack dev">
         <div class="track-content">
-          <h4>Mobile Apps</h4>
-          <p>Flutter & React Native.</p>
+          <h4>Full-stack developer</h4>
+          <p>Front-end y back-end: HTML, CSS, JS, Python, SQL, React & más.</p>
         </div>
       </div>
     </div>

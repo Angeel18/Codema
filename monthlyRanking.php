@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['is_superuser'])) {
+session_destroy();
+header("location:/");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

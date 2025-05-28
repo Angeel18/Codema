@@ -170,23 +170,11 @@ display: none;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     align-items: center;
-    padding: 6rem 6rem;
-    position: relative;
+    padding: 5rem 6rem;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     overflow: hidden;
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: -120px;
-    left: 0;
-    width: 180%;
-    height: 180px;
-    background: var(--background-color);
-    transform: rotate(-3deg);
-    transform-origin: top left;
-}
 
 .hero-copy {
     z-index: 1;
@@ -234,11 +222,11 @@ display: none;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2.5rem;
-    filter: grayscale(1) opacity(0.7);
+    filter: grayscale(0.5) opacity(0.7);
 }
 
 .logo-wrap img {
-    height: 40px;
+    height: 100px;
     object-fit: contain;
     transition: filter 0.3s, opacity 0.3s;
 }
