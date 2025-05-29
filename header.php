@@ -28,11 +28,11 @@
           </a>
         </li>
       <?php else: ?>
-        <li><a href="#tracks">Tracks</a></li>
-        <li><a href="pricing">Pricing</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="aboutUs">About Us</a></li>
-        <li><a href="contact">Contact</a></li>
+        <li><a href="/#tracks">Tracks</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#newsletter">Newsletter</a></li>
+        <li><a href="/aboutUs">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
         <li>
           <a href="/login" title="Login">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill"

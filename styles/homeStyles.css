@@ -36,7 +36,7 @@ a {
 
 /* ==== Utilities ================================ */
 .container {
-    width: min(1200px, 80%);
+    width: min(90%);
     margin-inline: auto;
 }
 
@@ -167,7 +167,7 @@ display: none;
 /* ==== Hero ==================================== */
 .hero {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
     align-items: center;
     padding: 5rem 6rem;
@@ -240,7 +240,7 @@ display: none;
 .features {
     padding: 5rem 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
 }
 
@@ -266,7 +266,7 @@ display: none;
 
 .tracks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
     margin-top: 2.5rem;
 }
@@ -299,9 +299,10 @@ display: none;
 .curriculum {
     padding: 5rem 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 3rem;
     align-items: center;
+    justify-items: center;
 }
 
 .curriculum img {
@@ -333,7 +334,7 @@ display: none;
 
 .testimonial-wrap {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
 }
 
@@ -367,6 +368,7 @@ display: none;
 .pricing {
     padding: 5rem 2rem;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 1rem;
 }
 
 .pricing h2 {
@@ -377,7 +379,7 @@ display: none;
 
 .plans {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
 }
 .plan {
@@ -431,6 +433,9 @@ display: none;
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .cta h2 {
@@ -442,6 +447,7 @@ display: none;
 .newsletter {
     background: var(--primary-color);
     padding: 4rem 2rem;
+    margin-top: 1rem;
     text-align: center;
 }
 
@@ -617,5 +623,20 @@ footer {
     opacity: 1;
     pointer-events: auto;
 
+    }
+    #curriculum-content{
+        justify-items: center !important;
+        text-align: center;
+    }
+    .hero {
+        padding: 1rem 2rem;
+    }
+
+    .hero-copy
+    {
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        gap: 1rem;
     }
 }

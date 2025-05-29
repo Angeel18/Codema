@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Codema - Pricing</title>
   <link rel="stylesheet" href="styles/homeStyles.css">
   <link rel="icon" type="image/png" href="media/favicon.png">
 
@@ -80,6 +80,7 @@ session_start();
         <a class="btn" href="#">Become Master</a>
       </div>
     </div>
+  </section>
 
     <div class="pricing-info" style="text-align: center; margin-top: 4rem;">
       <h3>Compare Plans</h3>
@@ -111,7 +112,6 @@ session_start();
       <p>Choose your plan now and start learning programming at your own pace!</p>
       <a href="#pricing" class="btn">Get Started</a>
     </div>
-  </section>
 </main>
       <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");

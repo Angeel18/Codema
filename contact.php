@@ -6,8 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="media/favicon.png">
-    <title>Document</title>
+    <title>Codema - Contact </title>
      <link rel="stylesheet" href="styles/homeStyles.css">
 
 </head>

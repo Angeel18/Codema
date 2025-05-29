@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="media/favicon.png">
-    <title>Document</title>
+    <title>Codema - About Us</title>
      <link rel="stylesheet" href="styles/homeStyles.css">
 
 </head>
@@ -15,7 +15,6 @@ session_start();
        <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     ?>
-    <main class="container">
   <!-- Introduction -->
   <section class="hero">
     <div class="hero-copy">
@@ -24,8 +23,9 @@ session_start();
         Codema is a project created by two developers with the mission of making programming education more accessible, practical, and fun for everyone. We believe knowledge should be shared — that’s why we’ve built this free and interactive platform.
       </p>
     </div>
-    <img src="https://source.unsplash.com/800x600/?coding,team" alt="Development team">
+    <img src="https://images.unsplash.com/photo-1637073849667-91120a924221?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Development team">
   </section>
+    <main class="container">
 
   <!-- Mission and Vision -->
   <section class="features">
@@ -57,7 +57,7 @@ session_start();
         <li>Lightweight architecture for top performance</li>
       </ul>
     </div>
-    <img src="https://source.unsplash.com/800x600/?code,technology" alt="Technology used">
+    <img src="https://images.unsplash.com/photo-1669023414162-8b0573b9c6b2?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Technology used">
   </section>
 
   <!-- Core Values -->

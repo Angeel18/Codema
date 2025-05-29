@@ -28,7 +28,6 @@ session_start();
     <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     ?>
-  
   <!-- Hero -->
   <section class="hero reveal">
     <div class="hero-copy">
@@ -40,6 +39,8 @@ session_start();
     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/24ed9392232693.5e45b4885aef5.jpg"
       alt="Technology picture">
   </section>
+  <main class="container">
+
   <!-- Features -->
   <section id="features" class="features reveal">
     <div class="feature-card">
@@ -73,7 +74,7 @@ session_start();
     <div class="tracks-grid">
       <div class="track"><img
           src="https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/front-end-developer.png" alt="Web dev">
-        <div class="Front-end dev">
+        <div class="track-content">
           <h4>Front-end developer</h4>
           <p>HTML, CSS, JS, React & more.</p>
         </div>
@@ -98,15 +99,16 @@ session_start();
   </section>
   <!-- Curriculum -->
   <section class="curriculum reveal">
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       alt="Curriculum preview">
-    <div>
-      <h3>Dive into a career-ready curriculum</h3>
+    <div style="display:grid; gap: 1rem; justify-items: start ;width:100%;" id="curriculum-content">
+      <h3>Get ready for todays programming</h3>
       <ul>
-        <li>200+ bite-sized lessons</li>
-        <li>Hands-on projects</li>
+        <li>200+ different exercises</li>
+        <li>See instant results of your code</li>
         <li>Mini-quizzes</li>
-        <li>Weekly webinars</li>
+        <li>Daily challenges</li>
+        <li>AI chatbot integrated</li>
       </ul><a class="btn" href="#pricing">See Pricing</a>
     </div>
   </section>
@@ -193,6 +195,7 @@ session_start();
   <section class="cta reveal">
     <h2>Ready to start coding your future?</h2><a class="btn" href="#pricing">Create Your Free Account</a>
   </section>
+</main>
   <!-- Newsletter -->
   <section id="newsletter" class="newsletter reveal">
     <h2>Get tips & free mini‑lessons</h2>
@@ -220,7 +223,6 @@ session_start();
     </div>
   </section>
   <!-- Footer -->
-
       <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
     ?>
