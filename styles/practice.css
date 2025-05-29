@@ -51,10 +51,10 @@
 .extraContent {
     position: fixed;
     top: 0;
-    right: -40vw;
-    width: 40vw;
+    right: -80vw;
+    width: 80vw;
     height: 100vh;
-    background-color: #ccc;
+    /* background-color: #ccc; */
     z-index: 1000;
     transition: right 0.4s ease;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
@@ -69,7 +69,7 @@
 .extraContentArrow {
     width: 40px;
     height: 40px;
-    background-color: var(--success-color);
+    background-color: var(--accent-color);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     display: flex;
@@ -79,13 +79,17 @@
     position: absolute;
     left: -40px;
     top: 20%;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .extraContentInner {
     padding: 2rem;
     flex: 1;
-    background-color: var(--success-color);
+    background-color: var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    height: 100%;
 }
 
 #arrowIcon {
@@ -94,6 +98,18 @@
 
 .extraContent.visible #arrowIcon {
     transform: rotate(180deg);
+}
+.extraContentInner #description {
+  font-size: clamp(1.05rem, 2.2vw, 1.15rem);
+  margin: 1.5rem 0;
+}
+
+/* Lista de tips con fuente un poco menor */
+.extraContentInner ul#tips,
+.extraContentInner ul#tips li,
+.extraContentInner p  {
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
+  margin-bottom: 0.5rem;
 }
 
 /* === Elementos de formulario === */
@@ -166,3 +182,4 @@ button:hover {
     opacity: 1;
     transform: none;
 }
+
