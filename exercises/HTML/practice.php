@@ -8,6 +8,7 @@ session_start();
   <meta charset="UTF-8">
   <title>Editor Python con Monaco</title>
   <link rel="stylesheet" href="../../styles/homeStyles.css">
+  <link rel="icon" type="image/png" href="../../media/favicon.png">
   <link rel="stylesheet" href="../../styles/practice.css">
 </head>
 

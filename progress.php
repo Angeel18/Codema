@@ -13,6 +13,7 @@ session_start();
   <title>My Progress</title>
   <link rel="stylesheet" href="styles/homeStyles.css" />
   <link rel="stylesheet" href="styles/progress.css" />
+  <link rel="icon" type="image/png" href="media/favicon.png">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

@@ -14,6 +14,7 @@ session_start();
   <meta name="description"
     content="Codema – Learn to code daily with interactive challenges, gamified streaks and a supportive community.">
   <title>Codema – Learn to Code Daily</title>
+  <link rel="icon" type="image/png" href="media/favicon.png">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

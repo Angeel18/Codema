@@ -8,6 +8,7 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/png" href="../media/favicon.png">
   <title>Codema – Practical exercises</title>
   <link rel="stylesheet" href="../../styles/homeStyles.css">
   <link rel="stylesheet" href="../../styles/practice.css">

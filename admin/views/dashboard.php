@@ -167,6 +167,7 @@ $rows = $db->query("SELECT * FROM `$schema`.`$table`")->fetchAll(PDO::FETCH_ASSO
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Admin: <?= htmlspecialchars($table) ?></title>
     <link rel="stylesheet" href="../../styles/homeStyles.css">
+  <link rel="icon" type="image/png" href="../../media/favicon.png">
     <link rel="stylesheet" href="../../styles/auth.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <link
