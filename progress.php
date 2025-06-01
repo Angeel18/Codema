@@ -34,7 +34,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     <p><strong>Exercises Done:</strong> <span id="exercises">--</span></p>
     <p><strong>Level:</strong> <span id="level">--</span></p>
     <p><strong>Experience:</strong> <span id="experience">--</span></p>
-    <p><strong>Languages Studied:</strong> <span id="languages">--</span></p>
+    <p><strong>Skills:</strong> <span id="languages">--</span></p>
     <p><strong>Active Since:</strong> <span id="activeSince">--</span></p>
   </div>
 </div>

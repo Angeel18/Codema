@@ -20,19 +20,9 @@ $userId = isset($_SESSION["id_user"]) ? header("location:./courses.php") : "" ;
 </head>
 
 <body>
-  <header>
-    <a href="index.html" class="logo">Codema</a>
-    <nav>
-      <ul>
-        <li><a href="index.html#features">Features</a></li>
-        <li><a href="index.html#tracks">Tracks</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="index.html#newsletter">Newsletter</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
+    ?>
 
   <section class="auth-section">
     <div class="container">
@@ -66,17 +56,23 @@ $userId = isset($_SESSION["id_user"]) ? header("location:./courses.php") : "" ;
           </div>
         </div>
 
+
+        <label for="sel-plan">Selected Plan</label>
+        <select name="sel-plan" id="sel-plan">
+            <option value="" selected disabled>Select a plan</option>
+        </select>
+
         <button type="submit" class="btn">Register</button>
         <p>Already have an account? <a href="login.php" class="btn-outline">Login</a></p>
       </form>
     </div>
+
+
   </section>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Codema. All rights reserved.</p>
-    <p>Email: hello@Codema.io • Madrid, Spain</p>
-  </footer>
-
+      <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
+    ?>
   <!-- Registration fetch script -->
   <script src="scripts/register.js"></script>
 </body>

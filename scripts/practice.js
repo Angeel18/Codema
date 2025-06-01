@@ -116,21 +116,39 @@ async function fetchExcercise() {
 
 async function checkAnswer() {
 
-  if (await checkTries()) {
+  let check
+  try {
+    let response = await fetch(`../actions/countTries.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({Table:"Exercise", idExercise:idExercise})
+
+    });
+
+     check = await response.json();
+    
+  } catch (error) {
+    console.error("Error en la petición:", error);
+  }
+
+  if (await check) {
   if(data.solution==editor.getValue()){
     //si llega aqui se inserta el progresso y suma puntos
     //recordatorio en la bbdd la combinacion usuario ejercicio en la tabla progreso es unica asi que si un usuario hace bien 2 veces el mismo ejercicio no insertara en progres la 2º asi que no se sumara puntos 2 veces
     //aun asi puede ejecutar y checkear el codigo
+
     try {
       let response2 = await fetch(`../actions/addPoints.php`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ idExercise: idExercise })
+        body: JSON.stringify({Table:"Exercise", idExercise: idExercise })
       });
       
-      console.log("aaaa");
+      // console.log("aaaa");
       let data5 = await response2.json();
 
       console.log(data5);
@@ -183,32 +201,33 @@ document.getElementById("run").addEventListener('click', () => {
 
 
 
-async function checkTries() {
-// console.log("sda");
-  try {
-    let response = await fetch(`../actions/countTries.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ idExercise:idExercise})
+// async function checkTries() {
+// // console.log("sda");
+//   try {
+//     let response = await fetch(`../actions/countTries.php`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify({ idExercise:idExercise})
 
-    });
+//     });
 
-    let check = await response.json();
-    //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
-    // console.log(check)
-    console.log(check[0]);
-    if(check[0]<3){
-      return true;
-    }else{
-      return false;
-    }
+//     let check = await response.json();
+//     //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
+//     // console.log(check)
+//     // console.log(check[0]);
 
-  } catch (error) {
-    console.error("Error en la petición:", error);
-  }
-}
+//     if(check[0]<3){
+//       return true;
+//     }else{
+//       return false;
+//     }
+
+//   } catch (error) {
+//     console.error("Error en la petición:", error);
+//   }
+// }
 
 async function loadTips(params) {
     const datos = arrayTips[lan] || [];

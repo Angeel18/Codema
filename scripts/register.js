@@ -46,3 +46,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+async function selectedPlan() {
+  const selectedPlan = document.getElementById("sel-plan");
+
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan') ?? '';
+
+  let data;
+   try {
+    const response = await fetch(`../actions/fetchPlan.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+
+    data = await response.json();
+    
+    data.forEach(element => {
+      let option = document.createElement("option");
+      option.textContent=element.name+ "-"+ element.price+"€";
+      option.value=element.idPlan;
+      if(element.name==plan){
+        option.selected=true;
+      }
+      selectedPlan.appendChild(option);
+    });
+
+  } catch (error) {
+    console.error("Error en la petición:", error);
+  }
+}
+
+selectedPlan();

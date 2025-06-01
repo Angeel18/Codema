@@ -1,5 +1,11 @@
 <?php
 session_start();
+$userId = !isset($_SESSION["id_user"]) ? header("location:../") : "" ;
+if (isset($_SESSION['is_superuser'])) {
+  session_destroy();
+  session_start();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

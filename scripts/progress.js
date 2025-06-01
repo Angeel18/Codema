@@ -85,7 +85,9 @@ async function fetchUser() {
   document.getElementById("nickname").textContent=user[0].nickname
   document.getElementById("level").textContent=user[0].level
   document.getElementById("experience").textContent=user[0].experience
-  document.getElementById("activeSince").textContent=user[0].creationDate
+  // document.getElementById("activeSince").textContent=user[0].creationDate
+  document.getElementById("activeSince").textContent = user[0].creationDate.split(' ')[0];
+
 
 }
 

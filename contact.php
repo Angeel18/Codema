@@ -22,7 +22,7 @@ session_start();
       We'd love to hear from you! Whether you have a question about our platform, need support, want to share feedback, or just want to say hello — feel free to reach out.
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
       
       <!-- Contact Form -->
       <form class="contact-form" style="background: var(--primary-color); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">

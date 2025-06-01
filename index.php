@@ -145,7 +145,7 @@ session_start();
         <li>Basic streak tracking</li>
         <li>Ad‑supported experience</li>
       </ul>
-      <a class="btn" href="#">Start Free</a>
+      <a class="btn" href="/register?plan=Free">Start Free</a>
     </div>
 
     <!-- Plus Plan -->
@@ -159,7 +159,7 @@ session_start();
         <li>Weekly progress reports</li>
         <li>No ads • Monthly webinars</li>
       </ul>
-      <a class="btn" href="#">Upgrade to Plus</a>
+      <a class="btn" href="/register?plan=Plus">Upgrade to Plus</a>
     </div>
 
     <!-- Pro Plan (recommended) -->
@@ -173,7 +173,7 @@ session_start();
         <li>AI code review & personalized study plan</li>
         <li>Priority email support</li>
       </ul>
-      <a class="btn" href="#">Upgrade to Pro</a>
+      <a class="btn" href="/register?plan=Pro">Upgrade to Pro</a>
     </div>
 
     <!-- Master Plan -->
@@ -187,7 +187,7 @@ session_start();
         <li>Career services & interview prep</li>
         <li>Exclusive masterclasses & certificate</li>
       </ul>
-      <a class="btn" href="#">Become Master</a>
+      <a class="btn" href="/register?plan=Master">Become Master</a>
     </div>
   </div>
   </section>

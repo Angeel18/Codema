@@ -267,6 +267,8 @@ nav a:hover {
     /* padding: 5rem 2rem; */
     padding: 5rem 1rem;
     background: var(--header-footer-bg);
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
 }
 
 .tracks-grid {
@@ -303,12 +305,14 @@ nav a:hover {
 /* ==== Curriculum Preview ====================== */
 .curriculum {
     /* padding: 5rem 2rem; */
+    margin-top: 1rem;
     padding: 5rem 10pxrem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 3rem;
     align-items: center;
     justify-items: center;
+    padding: 1rem;
 }
 
 .curriculum img {
@@ -401,9 +405,8 @@ nav a:hover {
     text-align: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s;
+    justify-content: space-between;
 }
-
-
 
 .plan.recommended {
     border: 2px solid var(--success-color);
@@ -425,7 +428,7 @@ nav a:hover {
 .plan ul {
     list-style: none;
     margin: 1.5rem 0;
-    text-align: left;
+    text-align: center;
 }
 
 .plan li {
@@ -648,7 +651,7 @@ footer {
     }
 
     .hero {
-        padding: 1rem 0;
+        padding: 1rem 1rem;
     }
 
     .hero-copy {
@@ -661,41 +664,12 @@ footer {
     .plans {
         /* display: none; */
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr auto-fit;
         gap: 2rem;
 
     }
 
-    .plans .plan {
-        padding: 0;
-    }
 
-    .plans .plan ul {
-        display: none;
-    }
-
-    .plans .plan.recommended {
-        padding: 0;
-        transform: none;
-    }
-
-    .plans .plan h3 {
-        font-size: 1rem;
-        margin: 1rem 0 0 0;
-    }
-
-    .plans .price {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .data {
-        display: none;
-    }
-
-    .planData {
-        margin-top: 2rem;
-    }
 
 
 

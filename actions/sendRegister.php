@@ -14,6 +14,9 @@ $nickname = trim($_POST['nickname'] ?? '');
 $password = $_POST['password'] ?? '';
 $email    = trim($_POST['email'] ?? '');
 
+$plan    = trim($_POST['sel-plan'] ?? '');
+$experience=0;
+
 $errors = [];
 
 // 2) Basic validation (you can expand this)
@@ -49,9 +52,9 @@ $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
 $insert = $db->prepare("
     INSERT INTO `user` 
-      (name, surname, email, nickname, password) 
+      (name, surname, email, nickname, password,idPlan,experience) 
     VALUES 
-      (?, ?, ?, ?, ?)
+      (?, ?, ?, ?, ?,?,?)
 ");
 $ok = $insert->execute([
     $name,
@@ -59,6 +62,8 @@ $ok = $insert->execute([
     $email,
     $nickname,
     $hashedPassword,
+    $plan,
+    $experience,
 ]);
 
 if ($ok) {

@@ -14,6 +14,11 @@ session_start();
 
 require_once '../config/bbdd_config.php';
 
+// If user is already logged in (id_user is set), destroy session and start a new one
+if (isset($_SESSION['id_user'])) {
+    session_destroy();
+    session_start();
+}
 
 // If already logged‑in as superuser, skip the form
 if (isset($_SESSION['is_superuser']) && $_SESSION['is_superuser'] === true) {

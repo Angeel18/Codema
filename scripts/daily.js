@@ -5,6 +5,7 @@ const check = document.getElementById("check");
 const arrow = document.getElementById("extraContentArrow");
 const panel = document.getElementById("extraContent");
 const LanguageToCode = document.getElementById("LanguageToCode");
+let idExercise;
 
 
 
@@ -32,6 +33,7 @@ async function dailyChallenge(){
     lanMinus=data.name.toLowerCase();
     // editor.setValue(data.extraField); 
     LanguageToCode.textContent="Language: "+data.name;
+    idExercise=data.idDaily;
     document.getElementById("description").textContent=data.description;
   } catch (error) {
     console.error("Error en la petición:", error);
@@ -58,7 +60,7 @@ async function initialize() {
 }
 
 async function checkWithAI() {
-  if (await checkTries()) {
+
      const code = editor.getValue();
   try {
     const response = await fetch(`../actions/checkWithAI.php`, {
@@ -68,15 +70,27 @@ async function checkWithAI() {
       },
       body: JSON.stringify({ code: code , description:data.description,Language:lanMinus})
     });
-    // console.log(data);
-
     let check = await response.json();
-    //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
-    // console.log(check)
-    if (check=="RIGHT") {
 
-    
+    if (check=="RIGHT") {
+          try {
+      let response2 = await fetch(`../actions/addPoints.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({Table:"Daily", idExercise: idExercise })
+      });
+      
+      // console.log("aaaa");
+      let data5 = await response2.json();
+
+      console.log(data5);
+
+    }catch{
+    }
      alert("\u2705 Correct!");
+
 
   }else{
       alert(`\u274C Incorrect`);
@@ -86,11 +100,9 @@ async function checkWithAI() {
     console.error("Error en la petición:", error);
   }
   }
-  else{
-    alert("You Exceed the number of tries for this exercise today");
-  }
+
  
-}
+
 
 
 
@@ -124,29 +136,3 @@ document.getElementById("run").addEventListener('click', () => {
 
 
 
-async function checkTries() {
-// console.log("sda");
-  try {
-    let response = await fetch(`../actions/countTries.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ idExercise:40})
-
-    });
-
-    let check = await response.json();
-    //si el usuario intenda hacceder a ejercicios por la url y pone una combinacion no valida como cargar un ej de teoria en la pantalla de practica le redirijira al selector de ejercicios
-    // console.log(check)
-    console.log(check[0]);
-    if(check[0]<3){
-      return true;
-    }else{
-      return false;
-    }
-
-  } catch (error) {
-    console.error("Error en la petición:", error);
-  }
-}
