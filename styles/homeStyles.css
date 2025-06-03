@@ -71,6 +71,10 @@ nav ul {
     display: flex;
     gap: 1.75rem;
     list-style: none;
+    align-items: center;
+}
+nav li {
+padding: 0.5rem;
 }
 
 nav a {
