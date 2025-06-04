@@ -1,6 +1,6 @@
 <?php
 session_start();
-$userId = isset($_SESSION["id_user"]) ? header("location:./courses.php") : "" ;
+// $userId = isset($_SESSION["id_user"]) ? header("location:./courses.php") : "" ;
 
 ?>
 
@@ -24,10 +24,10 @@ $userId = isset($_SESSION["id_user"]) ? header("location:./courses.php") : "" ;
     require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     ?>
 
-  <section class="auth-section">
+  <section class="auth-section reveal">
     <div class="container">
       <h2 class="section-title">Create a New Account</h2>
-      <form id="register-form" class="auth-form" action="#" method="post">
+      <form id="register-form" class="auth-form" action="/payment/payment.php" method="post">
         <div class="auth-row">
           <div class="auth-group">
             <label for="reg-name">First Name</label>

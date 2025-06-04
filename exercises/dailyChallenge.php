@@ -38,8 +38,23 @@ if (isset($_SESSION['is_superuser'])) {
 
   <div class="extraContentInner">
     Exercise Information
-    <p id="LanguageToCode"></p>
-    <p id="description"></p>
+        <h1 class="logo">Codema</h1>
+   
+    <h2 id="LanguageToCode"></h2>
+    <strong>
+      <p id="description"></p>
+    </strong>
+    <ul id="tips">
+      <!-- Mensajes por defecto, en el js los cambio -->
+      <li>Write clear and readable code: Prioritize readability over complexity; simple code is easier to maintain and less prone to errors.</li>
+      <li>Break problems into smaller parts: Tackle complex challenges by breaking them down into simple, manageable steps to make them easier to solve.</li>
+      <li>Review and test your code regularly: Test frequently to catch errors early and ensure your solution works as expected.</li>
+    </ul>
+
+    <p>
+      <strong>Remember</strong>
+      Read the instructions carefully, think about the logic before writing code, and test your solution with different cases. If you get stuck, break the problem into small steps and review the basic syntax of the language. Don’t be afraid to make mistakes — every error is an opportunity to learn!
+    </p>
   </div>
 </div>
 

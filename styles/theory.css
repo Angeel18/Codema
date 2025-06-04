@@ -51,12 +51,7 @@ body {
   .option input {
     margin-right: 5px;
   }
-  button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    font-size: 1em;
-    cursor: pointer;
-  }
+
   #feedback {
     margin-top: 10px;
     font-weight: bold;

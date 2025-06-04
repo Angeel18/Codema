@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault(); // stop the normal form post
 
-    const pwd     = document.getElementById('reg-password').value;
+    const pwd = document.getElementById('reg-password').value;
     const confirm = document.getElementById('reg-confirm-password').value;
 
     // 1) password match check
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2) gather all form data
     const formData = new FormData(form);
-
+    console.log(formData.get('sel-plan'));
     try {
       // 3) send to sendRegister.php
       const res = await fetch('actions/sendRegister.php', {
@@ -34,7 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (data.successful) {
         // registration succeeded!
 
-        window.location.href = 'https://codema.fun/courses.php';
+        switch (formData.get('sel-plan')) {
+          case '1':
+            alert("Thank you for trying our services")
+            form.action = 'https://codema.fun/email/sendEmailRegister.php';
+            form.method = 'POST';
+            form.submit();
+            // window.location.href = 'https://codema.fun/email/sendEmailRegister.php';
+
+            break;
+
+          default:
+            form.action = 'https://codema.fun/payment/payment.php';
+            form.method = 'POST';
+            form.submit();
+            break;
+        }
       }
       else {
         // unexpected response
@@ -50,12 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function selectedPlan() {
   const selectedPlan = document.getElementById("sel-plan");
-
   const params = new URLSearchParams(window.location.search);
   const plan = params.get('plan') ?? '';
 
   let data;
-   try {
+  try {
     const response = await fetch(`../actions/fetchPlan.php`, {
       method: "POST",
       headers: {
@@ -64,13 +78,13 @@ async function selectedPlan() {
     });
 
     data = await response.json();
-    
+
     data.forEach(element => {
       let option = document.createElement("option");
-      option.textContent=element.name+ "-"+ element.price+"€";
-      option.value=element.idPlan;
-      if(element.name==plan){
-        option.selected=true;
+      option.textContent = element.name + "-" + element.price + "€";
+      option.value = element.idPlan;
+      if (element.name == plan) {
+        option.selected = true;
       }
       selectedPlan.appendChild(option);
     });

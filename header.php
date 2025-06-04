@@ -39,7 +39,7 @@
         <li><a href="/aboutUs">About Us</a></li>
         <li><a href="/contact">Contact</a></li>
         <li>
-          <a href="/login" title="Login">
+          <a href="/login" title="Login" style="display:flex">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill"
               viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -91,102 +91,127 @@
   }
 
   .review-btn:hover svg {
-    color: gold;
+  color: var(--accent-color);
     transform: scale(1.1);
   }
 
   /* Estilos del modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  #reviewModal {
+  display: none; /* keep controlled by JS */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* darker overlay */
+}
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+/* Center the modal and match your dark header/footer palette */
+.modal-content {
+  background-color: var(--header-footer-bg);
+  color: var(--text-color);
+  margin: 10% auto;
+  padding: 1.5rem;
+  border-radius: 1rem;             /* use same border radius as in your theme */
+  width: 90%;
+  max-width: 460px;                /* slightly narrower than before */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--secondary-color);
+}
 
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+/* Header row inside modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
 
-  .modal-header h2 {
-    margin: 0;
-    color: #333;
-  }
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
 
-  .close-modal {
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #aaa;
-  }
+.close-modal {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: color 0.2s;
+}
 
-  .close-modal:hover {
-    color: #333;
-  }
+.close-modal:hover {
+  color: var(--accent-color);
+}
 
-  .stars-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+/* Body of modal: center stars + textarea + button */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-  .star {
-    cursor: pointer;
-    margin: 0 5px;
-    color: #ccc;
-    transition: all 0.2s ease;
-  }
+/* Stars: use your accent color when active */
+.stars-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
 
-  .star:hover,
-  .star.active {
-    color: gold;
-    transform: scale(1.1);
-  }
+.star {
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: all 0.2s ease;
+}
 
-  #reviewComment {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 20px;
-  }
+.star:hover,
+.star.active {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
 
-  .submit-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
+/* Rating input is hidden, so no change needed */
 
-  .submit-btn:hover {
-    background-color: #45a049;
-  }
+/* Textarea: match background and text colors, softer border */
+#reviewComment {
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  resize: vertical;
+  line-height: 1.5;
+}
 
-  .submit-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
+/* Submit button: reuse your .btn class rather than inline .submit-btn */
+.submit-btn {
+  /* If you already have a “.btn” class, you can combine both:
+     <button class="btn submit-btn">Enviar</button> */
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+  align-self: center;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 0.92;
+}
+
+.submit-btn:disabled {
+  background-color: #444; /* or use a grayed-out var(--secondary-color) */
+  cursor: not-allowed;
+}
 </style>
 
 <script>

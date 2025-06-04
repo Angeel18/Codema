@@ -31,7 +31,7 @@ $userId = isset($_SESSION["id_user"]) ? header("location:/") : "" ;
     <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
     ?>
-  <section class="auth-section ">
+  <section class="auth-section reveal">
     <div class="container">
       <h2 class="section-title">Login to Your Account</h2>
       <form class="auth-form" action="#" method="post">
