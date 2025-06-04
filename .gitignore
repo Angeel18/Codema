@@ -2,3 +2,4 @@ PruebaSSL
 .htaccess
 .env
 .gitingore
+vendor
