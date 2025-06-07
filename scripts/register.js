@@ -36,15 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch (formData.get('sel-plan')) {
           case '1':
+            //en este caso es el plan gratis, crea un formulario, y envia los datos al login para logearse de forma automatica
             alert("Thank you for trying our services")
-            form.action = 'https://codema.fun/email/sendEmailRegister.php';
-            form.method = 'POST';
-            form.submit();
+            const loginData = new FormData();
+            loginData.append('email', formData.get('email'));
+            loginData.append('password', formData.get('password'));
+
+            const loginRes = await fetch('actions/sendLogin.php', {
+              method: 'POST',
+              body: loginData,
+            });
+
+            const loginJson = await loginRes.json();
+
+            if (loginJson.successful) {
+              window.location.href = 'https://codema.fun/'; // o dashboard
+            } else {
+              alert('Registro exitoso, pero no se pudo iniciar sesión automáticamente. Por favor, inicia sesión.');
+              window.location.href = 'https://codema.fun/login.php';
+            }
             // window.location.href = 'https://codema.fun/email/sendEmailRegister.php';
 
             break;
 
           default:
+            //en caso de no cualqueir otro plan lo reenvia a payment y ahi se inicia la sesion
             form.action = 'https://codema.fun/payment/payment.php';
             form.method = 'POST';
             form.submit();

@@ -6,6 +6,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+if (isset($_POST['idUser'])) {
+    $_SESSION["id_user"] = $_POST['idUser'];
+}
+
 // Si hace falta probar un correo se puede poner entre las comillas a la hora de traerse el nombre y el email
 $userName = $_SESSION['name'] ?? $_POST['name'] ?? '';
 $userEmail = $_SESSION['email'] ?? $_POST['email'] ?? '';

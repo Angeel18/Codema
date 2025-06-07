@@ -48,4 +48,14 @@ echo json_encode([
     'userId'     => (int)$user['idUser']
 ]);
 
-$_SESSION["id_user"] = $user['idUser'];
+
+// 6) check if the account order is paid to start the session
+$stmtOrder = $db->prepare("SELECT state FROM purchase_orders WHERE idUser = ?");
+$stmtOrder->execute([$user['idUser']]);
+
+$result = $stmtOrder->fetch(PDO::FETCH_ASSOC);
+
+// Asegúrate de que hay un resultado
+if ($result && $result['state'] === 'paid') {
+    $_SESSION["id_user"] = $user['idUser'];
+}

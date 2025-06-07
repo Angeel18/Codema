@@ -36,6 +36,22 @@ if (!$password) {
     $errors['password'] = 'Required';
 }
 
+//if user cancel regiter and try to register again this part delete the previous register so user can have its original email
+if (isset($_SESSION["idOrder"])) {
+    $stmt = $db->prepare("SELECT idUser, state FROM purchase_orders WHERE idOrder = ?");
+    $stmt->execute([$_SESSION['idOrder']]);
+    $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
+    if ($order && $order['state'] === 'unpaid') {
+        $db->prepare("DELETE FROM purchase_orders WHERE idOrder = ?")->execute([$_SESSION['idOrder']]);
+        $db->prepare("DELETE FROM user WHERE idUser = ?")->execute([$order['idUser']]);
+    }
+
+    unset($_SESSION['idOrder']);
+}
+
+
 if (empty($errors)) {
     // 3) Check email uniqueness
     $stmt = $db->prepare("SELECT idUser FROM `user` WHERE email = ?");
@@ -57,9 +73,11 @@ if (!empty($errors)) {
     exit;
 }
 
+
+
+
 // 6) All good — hash & insert
 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
 $insert = $db->prepare("
     INSERT INTO `user` 
       (name, surname, email, nickname, password,idPlan,experience) 
@@ -79,38 +97,46 @@ $ok = $insert->execute([
 if ($ok) {
     echo json_encode(['successful' => true]);
     $userId = $db->lastInsertId();
-    $_SESSION["id_user"] = $userId;
+    // $_SESSION["id_user"] = $userId;
 
-    // insert order
-    if($plan==1){
-    $insert = $db->prepare("
+    // //si se mete en este if es porque cancelo antes de pagar y esta intentando volver a registrarse
+    
+
+
+    // insert order si el plan es el gratis lo inserta como paid directamente
+    if ($plan == 1) {
+        $insert = $db->prepare("
     INSERT INTO `purchase_orders` 
       (idUser, idPlan,state) 
     VALUES 
       (?, ?,'paid')
     ");
 
-    $orderOk = $insert->execute([
-        $userId,
-        $plan
-    ]);
+        $orderOk = $insert->execute([
+            $userId,
+            $plan
+        ]);
+        
+    $orderId = $db->lastInsertId();
+    $_SESSION["idOrder"] = $orderId;
 
-    }else{
-            $insert = $db->prepare("
+
+    } else {
+        $insert = $db->prepare("
     INSERT INTO `purchase_orders` 
       (idUser, idPlan) 
     VALUES 
       (?, ?)
     ");
 
-    $orderOk = $insert->execute([
-        $userId,
-        $plan
-    ]);
+        $orderOk = $insert->execute([
+            $userId,
+            $plan
+        ]);
 
     }
 
-    
+
     $orderId = $db->lastInsertId();
     $_SESSION["idOrder"] = $orderId;
 
@@ -120,10 +146,10 @@ if ($ok) {
         $stmt->execute([$plan]);
         $planData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION['plan_price']=$planData['price'];
+        $_SESSION['plan_price'] = $planData['price'];
     }
 
-    
+
 
 } else {
     // catch-all for DB errors
