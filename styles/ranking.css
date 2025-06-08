@@ -14,7 +14,7 @@ main {
 .ranking-layout {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
     justify-content: space-between;
 }
 
@@ -36,6 +36,11 @@ main {
     color: var(--text-color);
     width: 100px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+.podium p{
+      font-size: clamp(12px, 2vw, 16px);
+      /* text-overflow: ellipsis; */
+      /* overflow: auto; */
 }
 
 .podium .position {

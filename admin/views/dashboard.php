@@ -249,5 +249,9 @@ $rows = $db->query("SELECT * FROM `$schema`.`$table`")->fetchAll(PDO::FETCH_ASSO
 
         <a href="dashboard.php" class="back">&larr; Back to all tables</a>
     </main>
+
+
+
+
 </body>
 </html>

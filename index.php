@@ -4,6 +4,7 @@ if (isset($_SESSION['is_superuser'])) {
 session_destroy();
 session_start();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,49 @@ session_start();
 </head>
 
 <body>
+  <?php
+if (isset($_SESSION['subscribe_message'])):
+    $msg = $_SESSION['subscribe_message'];
+    $color = ($msg['type'] === 'success') ? '#155724' : '#721c24'; // texto verde oscuro o rojo oscuro
+    $bgcolor = ($msg['type'] === 'success') ? '#d4edda' : '#f8d7da'; // fondo verde claro o rojo claro
+    $bordercolor = ($msg['type'] === 'success') ? '#c3e6cb' : '#f5c6cb'; // borde
+
+    echo "
+    <div id='flash-message' style='
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 400px;
+        width: 90%;
+        padding: 15px 20px;
+        border: 1px solid {$bordercolor};
+        border-radius: 5px;
+        background-color: {$bgcolor};
+        color: {$color};
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        text-align: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    '>{$msg['text']}</div>
+
+    <script>
+      setTimeout(() => {
+        const msg = document.getElementById('flash-message');
+        if (msg) {
+          msg.style.opacity = '0';
+          setTimeout(() => msg.remove(), 500);
+        }
+      }, 5000);
+    </script>
+    ";
+
+    unset($_SESSION['subscribe_message']);
+endif;
+?>
   <!-- Header -->
 
     <?php
@@ -199,7 +243,7 @@ session_start();
   <!-- Newsletter -->
   <section id="newsletter" class="newsletter reveal">
     <h2>Get tips & free mini‑lessons</h2>
-    <form><input type="email" placeholder="you@example.com" required><button class="btn">Subscribe</button></form>
+    <form action="/actions/subscribe.php" method="POST"><input type="email" placeholder="you@example.com" name="emailSubscribe"required><button type="submit" class="btn">Subscribe</button></form>
     <p>No spam. Unsubscribe anytime.</p>
   </section>
   <!-- FAQ -->

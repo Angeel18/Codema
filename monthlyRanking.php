@@ -34,7 +34,7 @@ header("location:/");
     <main>
         <section class="ranking-section reveal">
             <div class="container">
-                <h2 class="section-title">Monthly Ranking</h2>
+                <h2 class="section-title" style="margin-top: 3rem;">Monthly Ranking</h2>
 
                 <div class="ranking-layout">
                     <!-- Podio Top 3 -->

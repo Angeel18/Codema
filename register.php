@@ -20,9 +20,9 @@ session_start();
 </head>
 
 <body>
-    <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
-    ?>
+  <?php
+  require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
+  ?>
 
   <section class="auth-section reveal">
     <div class="container">
@@ -59,20 +59,24 @@ session_start();
 
         <label for="sel-plan">Selected Plan</label>
         <select name="sel-plan" id="sel-plan">
-            <option value="" selected disabled>Select a plan</option>
+          <option value="" selected disabled>Select a plan</option>
         </select>
 
+        <label>
+          <input type="checkbox" name="terms" required>
+          I accept the <a href="terms" target="_blank" style="color: var(--secondary-color)">Terms and Conditions</a>
+        </label>
         <button type="submit" class="btn">Register</button>
-        <p>Already have an account? <a href="login.php" class="btn-outline">Login</a></p>
+        <p>Already have an account? <a href="login" class="btn-outline">Login</a></p>
       </form>
     </div>
 
 
   </section>
 
-      <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
-    ?>
+  <?php
+  require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
+  ?>
   <!-- Registration fetch script -->
   <script src="scripts/register.js"></script>
 </body>
