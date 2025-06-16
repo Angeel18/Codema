@@ -152,7 +152,7 @@
       <div class="cta" style="background: var(--accent-color); color: var(--text-color); padding: 4rem 2rem;">
         <h2>Ready to start your learning journey?</h2>
         <p>Choose your plan now and start learning programming at your own pace!</p>
-        <a href="#pricing" class="btn">Get Started</a>
+        <a href="https://codema.fun/register" class="btn">Get Started</a>
       </div>
     </main>
     <?php
