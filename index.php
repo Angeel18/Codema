@@ -78,7 +78,6 @@ endif;
       <h1>Master coding in bite-sized lessons.</h1>
       <p>Interactive challenges, real-time feedback and gamified streaks that turn learning into a daily habit.</p>
       <a class="btn" href="#pricing">Start Free Today</a>
-      <a class="btn-outline" href="#">Book a Demo</a>
     </div>
     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/24ed9392232693.5e45b4885aef5.jpg"
       alt="Technology picture">

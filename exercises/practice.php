@@ -25,7 +25,7 @@ if (isset($_SESSION['is_superuser'])) {
   require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php");
   ?>
 
-<div class="extraContent" id="extraContent">
+<div class="extraContent visible" id="extraContent">
   <div class="extraContentArrow" id="extraContentArrow">
     <svg id="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
       class="bi bi-chevron-double-left" viewBox="0 0 16 16">

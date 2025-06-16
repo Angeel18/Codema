@@ -227,6 +227,7 @@
     }, { threshold: .15 });
     reveals.forEach(el => io.observe(el));
 
+    // console.log('Hamburger clicked');
     const hamburger = document.querySelector('.hamburger');
     hamburger.addEventListener('click', function() {
       hamburger.classList.toggle('active');
@@ -323,7 +324,7 @@
         body: JSON.stringify({
           rating: rating,
           comment: comment,
-          id_user: <?= $_SESSION['id_user'] ?>})
+          id_user: <?= isset($_SESSION['id_user']) ? $_SESSION['id_user'] : "null" ?>})
       })
       .then(response => response.json())
       .then(data => {

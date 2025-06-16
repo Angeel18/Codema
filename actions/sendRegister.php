@@ -14,7 +14,9 @@ $nickname = trim($_POST['nickname'] ?? '');
 $password = $_POST['password'] ?? '';
 $email = trim($_POST['email'] ?? '');
 
-$plan = trim($_POST['sel-plan'] ?? '');
+// $plan = trim($_POST['sel-plan'] ?? '');
+$plan = $_POST['sel-plan'] ;
+
 $experience = 0;
 
 $errors = [];
@@ -36,19 +38,23 @@ if (!$password) {
     $errors['password'] = 'Required';
 }
 
-//if user cancel regiter and try to register again this part delete the previous register so user can have its original email
-if (isset($_SESSION["idOrder"])) {
-    $stmt = $db->prepare("SELECT idUser, state FROM purchase_orders WHERE idOrder = ?");
-    $stmt->execute([$_SESSION['idOrder']]);
-    $order = $stmt->fetch(PDO::FETCH_ASSOC);
+//if user cancel register and try to register again this part delete the previous register so user can have its original email
 
-    
-    if ($order && $order['state'] === 'unpaid') {
-        $db->prepare("DELETE FROM purchase_orders WHERE idOrder = ?")->execute([$_SESSION['idOrder']]);
-        $db->prepare("DELETE FROM user WHERE idUser = ?")->execute([$order['idUser']]);
+if (isset($_SESSION["idOrder"])) {
+    $stmt55 = $db->prepare("SELECT idUser, state FROM purchase_orders WHERE idOrder = ?");
+    $stmt55->execute([$_SESSION["idOrder"]]);
+    $order55 = $stmt55->fetch(PDO::FETCH_ASSOC);
+
+    // Only delete if the order is unpaid and the user exists
+    if ($order55 && $order55['state'] === 'unpaid' && $order55['idUser']) {
+        // Delete the order
+        $db->prepare("DELETE FROM purchase_orders WHERE idOrder = ?")->execute([$_SESSION["idOrder"]]);
+        // Delete the user only if they exist
+        $db->prepare("DELETE FROM user WHERE idUser = ?")->execute([$order55['idUser']]);
     }
 
-    unset($_SESSION['idOrder']);
+    unset($_SESSION["idOrder"]);
+    // usleep(1000000);
 }
 
 
@@ -94,13 +100,16 @@ $ok = $insert->execute([
     $experience,
 ]);
 
+if (!$ok) {
+    $errorInfo = $insert->errorInfo();
+    echo json_encode(['error' => ['general' => 'Insert failed', 'details' => $errorInfo]]);
+    exit;
+}
+
 if ($ok) {
     echo json_encode(['successful' => true]);
     $userId = $db->lastInsertId();
     // $_SESSION["id_user"] = $userId;
-
-    // //si se mete en este if es porque cancelo antes de pagar y esta intentando volver a registrarse
-    
 
 
     // insert order si el plan es el gratis lo inserta como paid directamente
@@ -148,7 +157,6 @@ if ($ok) {
 
         $_SESSION['plan_price'] = $planData['price'];
     }
-
 
 
 } else {

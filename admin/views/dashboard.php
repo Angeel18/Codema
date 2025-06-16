@@ -251,6 +251,9 @@ $rows = $db->query("SELECT * FROM `$schema`.`$table`")->fetchAll(PDO::FETCH_ASSO
     </main>
 
 
+    <?php 
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.html");
+    ?>
 
 
 </body>

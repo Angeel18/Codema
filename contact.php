@@ -8,6 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codema - Contact </title>
      <link rel="stylesheet" href="styles/homeStyles.css">
+     <script src="scripts/contact.js" defer></script>
 
 </head>
 <body>

@@ -37,7 +37,20 @@ const arrayTips = {
     "Use functions to avoid repeating code: If you're doing the same thing multiple times, create a function to reuse it.",
     "Take advantage of list comprehensions: They're an elegant and efficient way to create new lists from existing ones.",
     "Use descriptive names for variables and functions: It makes your code easier to read and maintain."
-  ]
+  ],
+
+  HTML:[
+  "Always use proper doctype declaration at the beginning: <!DOCTYPE html> ensures consistent rendering across browsers.",
+  "HTML tags are not case-sensitive, but it's best practice to use lowercase for consistency and readability.",
+  "Close all your HTML tags properly, even self-closing ones like <img /> and <br /> in XHTML-style.",
+  "Use semantic HTML tags like <header>, <main>, <section>, and <footer> to improve accessibility and SEO.",
+  "Avoid using inline styles; prefer external CSS for better maintainability and separation of concerns.",
+  "Use the alt attribute on <img> tags to provide descriptive text for accessibility and SEO.",
+  "Indent nested elements properly to make your HTML structure easier to read and maintain.",
+  "Use comments <!-- like this --> to annotate your code and explain complex structures or sections.",
+  "Validate your HTML with a validator tool to catch syntax errors and improve overall quality.",
+  "Keep the structure clean and organized: use containers like <div> or <section> to group related content logically."
+]
 };
 
 

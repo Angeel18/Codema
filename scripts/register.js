@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2) gather all form data
     const formData = new FormData(form);
-    console.log(formData.get('sel-plan'));
+    // console.log(formData.get('sel-plan'));
     try {
       // 3) send to sendRegister.php
       const res = await fetch('actions/sendRegister.php', {
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await res.json();
 
+
       if (data.error) {
         // field‐specific errors
         // e.g. data.error.email or data.error.nickname
@@ -33,8 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       else if (data.successful) {
         // registration succeeded!
-
+        console.log(formData.get('sel-plan'));
         switch (formData.get('sel-plan')) {
+
           case '1':
             //en este caso es el plan gratis, crea un formulario, y envia los datos al login para logearse de forma automatica
             alert("Thank you for trying our services")
