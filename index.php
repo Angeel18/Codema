@@ -77,7 +77,7 @@ endif;
     <div class="hero-copy">
       <h1>Master coding in bite-sized lessons.</h1>
       <p>Interactive challenges, real-time feedback and gamified streaks that turn learning into a daily habit.</p>
-      <a class="btn" href="#pricing">Start Free Today</a>
+      <a class="btn" href="https://codema.fun/register?plan=Free">Start Free Today</a>
     </div>
     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/24ed9392232693.5e45b4885aef5.jpg"
       alt="Technology picture">
@@ -236,7 +236,7 @@ endif;
   </section>
   <!-- CTA -->
   <section class="cta reveal">
-    <h2>Ready to start coding your future?</h2><a class="btn" href="#pricing">Create Your Free Account</a>
+    <h2>Ready to start coding your future?</h2><a class="btn" href="https://codema.fun/register?plan=Free">Create Your Free Account</a>
   </section>
 </main>
   <!-- Newsletter -->
